@@ -7,9 +7,11 @@ make
 
 /*!<
 Observação: 
-É necessário que exista uma pasta ./resultados e dentro dela uma pasta correspondente para cada método de ordenação
+- É necessário que exista uma pasta ./resultados e dentro dela uma pasta correspondente para cada método de ordenação
 Lá serão salvos os resultados calculados
 O nome da pasta para cada método de ordenação deve ser igual definido no arquivo ordenacao.h
+- Além disso, é necessário que dentro da pasta ./resultados exista a pasta ./testes
+Lá serão salvas as tabelas, para cada método de ordenação e tipo de vetor, que correspondem as iterações de teste para um n={25, 100, 1000, 10000} 
 */
 
 /*!< gnuplot (https://www.cs.hmc.edu/~vrable/gnuplot/using-gnuplot.html) */
@@ -68,7 +70,7 @@ plot "merge_sort-aleatorio.dat" title "Aleatorio", "merge_sort-ordenado.dat" tit
 #define VALOR_MINIMO_ALEATORIO 1 /*!< Valor minimo para os elementos utilizado na geração do vetor aleatório */
 #define VALOR_MAXIMO_ALEATORIO 1000 /*!< Valor máximo para os elementos utilizado na geração do vetor aleatório */
 
-#define TAMANHO_DE_VETOR_MAXIMO 1000 //10000 /*!< O programa irá executar ordenação para n iniciando em 25 com acréscimo de 5 até TAMANHO_DE_VETOR_MAXIMO (ex. 25, 30, 35, ..., TAMANHO_DE_VETOR_MAXIMO) */
+#define TAMANHO_DE_VETOR_MAXIMO 10000 //100 /*!< O programa irá executar ordenação para n iniciando em 25 com acréscimo de 5 até TAMANHO_DE_VETOR_MAXIMO (ex. 25, 30, 35, ..., TAMANHO_DE_VETOR_MAXIMO) */
 #define QUANTIDADE_DE_TESTES 10 /*!< Quantidade de testes a serem realizados por execução de n (o tempo final será a média das QUANTIDADE_DE_TESTES execuções) */
 
 /*!< 
@@ -112,9 +114,13 @@ void ordenar(int ordenacao, int teste, int vetor_ordenacao[], int quantidade_de_
 
 void executar_testes(int tipo_de_vetor) {
       /*!< Criando arquivos para análise dos resulados */
-      FILE* arquivo_ordenacao1 = cria_arquivo_dat(ORDENACAO1, tipo_de_vetor);
-      FILE* arquivo_ordenacao2 = cria_arquivo_dat(ORDENACAO2, tipo_de_vetor);
-      FILE* arquivo_ordenacao3 = cria_arquivo_dat(ORDENACAO3, tipo_de_vetor);
+      FILE* arquivo_dat_ordenacao1 = cria_arquivo_dat(ORDENACAO1, tipo_de_vetor);
+      FILE* arquivo_dat_ordenacao2 = cria_arquivo_dat(ORDENACAO2, tipo_de_vetor);
+      FILE* arquivo_dat_ordenacao3 = cria_arquivo_dat(ORDENACAO3, tipo_de_vetor);
+
+      FILE* arquivo_csv_ordenacao1 = cria_arquivo_csv(ORDENACAO1, tipo_de_vetor);
+      FILE* arquivo_csv_ordenacao2 = cria_arquivo_csv(ORDENACAO2, tipo_de_vetor);
+      FILE* arquivo_csv_ordenacao3 = cria_arquivo_csv(ORDENACAO3, tipo_de_vetor);
      
       // //+2 para colocar a média e desvio padrão
       // long double medias_bubble[quantidade_de_testes+2][4];
@@ -218,82 +224,47 @@ void executar_testes(int tipo_de_vetor) {
             if(DEBUG) printf("Desvio Padrão - %s: %Lf\n", nome_ordenacao_por_codigo(ORDENACAO2), desvio_padrao_ordenacao2);
             if(DEBUG) printf("Desvio Padrão - %s: %Lf\n", nome_ordenacao_por_codigo(ORDENACAO3), desvio_padrao_ordenacao3);
 
+            /*!< Escrevendo arquivo para o gnuplot (.dat) */
             /*!< 
-                  Escrevendo arquivo .dat para gnuplot dentro da seguinte hierarquia:
+                  Hierarquia:
                         Método de ordenação
                               Tipo de vetor 
+                  
                   É armazenado (n, tempo)
             */
-            escrever_dat(arquivo_ordenacao1, quantidade_de_elementos, media_ordenacao1);
-            escrever_dat(arquivo_ordenacao2, quantidade_de_elementos, media_ordenacao2);
-            escrever_dat(arquivo_ordenacao3, quantidade_de_elementos, media_ordenacao3);
+            escrever_dat(arquivo_dat_ordenacao1, quantidade_de_elementos, media_ordenacao1);
+            escrever_dat(arquivo_dat_ordenacao2, quantidade_de_elementos, media_ordenacao2);
+            escrever_dat(arquivo_dat_ordenacao3, quantidade_de_elementos, media_ordenacao3);
 
-            // escrever_csv();
-
-            //Escrevendo as médias para a tabela de 25, 100, 1000 e 10000
-            // switch(quantidade_de_elementos) {
-            //       case 25:
-            //             for(int j = 0; j < quantidade_de_testes; j++) {
-            //                   medias_bubble[j][0] = tempo_de_execucao_bubble[j];
-            //                   medias_insertion[j][0] = tempo_de_execucao_insertion[j];
-            //                   medias_merge[j][0] = tempo_de_execucao_merge[j];
-            //             }
-
-            //             medias_bubble[quantidade_de_testes][0] = media_bubble;
-            //             medias_insertion[quantidade_de_testes][0] = media_insertion;
-            //             medias_merge[quantidade_de_testes][0] = media_merge;
-
-            //             medias_bubble[quantidade_de_testes+1][0] = desvio_padrao_bubble;
-            //             medias_insertion[quantidade_de_testes+1][0] = desvio_padrao_insertion;
-            //             medias_merge[quantidade_de_testes+1][0] = desvio_padrao_merge;
-            //             break;
-            //       case 100:
-            //             for(int j = 0; j < quantidade_de_testes; j++) {
-            //                   medias_bubble[j][1] = tempo_de_execucao_bubble[j];
-            //                   medias_insertion[j][1] = tempo_de_execucao_insertion[j];
-            //                   medias_merge[j][1] = tempo_de_execucao_merge[j];
-            //             }
-
-            //             medias_bubble[quantidade_de_testes][1] = media_bubble;
-            //             medias_insertion[quantidade_de_testes][1] = media_insertion;
-            //             medias_merge[quantidade_de_testes][1] = media_merge;
-
-            //             medias_bubble[quantidade_de_testes+1][1] = desvio_padrao_bubble;
-            //             medias_insertion[quantidade_de_testes+1][1] = desvio_padrao_insertion;
-            //             medias_merge[quantidade_de_testes+1][1] = desvio_padrao_merge;
-            //             break;
-            //       case 1000:
-            //             for(int j = 0; j < quantidade_de_testes; j++) {
-            //                   medias_bubble[j][2] = tempo_de_execucao_bubble[j];
-            //                   medias_insertion[j][2] = tempo_de_execucao_insertion[j];
-            //                   medias_merge[j][2] = tempo_de_execucao_merge[j];
-            //             }
-
-            //             medias_bubble[quantidade_de_testes][2] = media_bubble;
-            //             medias_insertion[quantidade_de_testes][2] = media_insertion;
-            //             medias_merge[quantidade_de_testes][2] = media_merge;
-
-            //             medias_bubble[quantidade_de_testes+1][2] = desvio_padrao_bubble;
-            //             medias_insertion[quantidade_de_testes+1][2] = desvio_padrao_insertion;
-            //             medias_merge[quantidade_de_testes+1][2] = desvio_padrao_merge;
-            //             break;
-            //       case 10000:
-            //             for(int j = 0; j < quantidade_de_testes; j++) {
-            //                   medias_bubble[j][3] = tempo_de_execucao_bubble[j];
-            //                   medias_insertion[j][3] = tempo_de_execucao_insertion[j];
-            //                   medias_merge[j][3] = tempo_de_execucao_merge[j];
-            //             }
-
-            //             medias_bubble[quantidade_de_testes][3] = media_bubble;
-            //             medias_insertion[quantidade_de_testes][3] = media_insertion;
-            //             medias_merge[quantidade_de_testes][3] = media_merge;
-
-            //             medias_bubble[quantidade_de_testes+1][3] = desvio_padrao_bubble;
-            //             medias_insertion[quantidade_de_testes+1][3] = desvio_padrao_insertion;
-            //             medias_merge[quantidade_de_testes+1][3] = desvio_padrao_merge;
-
-            //             break;
-            // }
+            /*!< Escrevendo arquivo de tabela de testes (.csv) para o relatório */
+            /*!< 
+                  Hierarquia:
+                        Método de ordenação
+                              Tipo de vetor 
+                  
+                  É armazenado:             
+                                    1  2  3  4  5  6  7  8  9  10 | Média ± Desvio Padrão
+                        25          
+                        10                 tempo para n no teste t
+                        100
+                        10000
+            */
+            switch(quantidade_de_elementos) {
+                  case 25:
+                  case 100:
+                  case 1000:
+                  case 10000:
+                        escrever_csv(arquivo_csv_ordenacao1, quantidade_de_elementos, 
+                                          tempo_de_execucao_ordenacao1, QUANTIDADE_DE_TESTES, 
+                                          media_ordenacao1, desvio_padrao_ordenacao1);
+                        escrever_csv(arquivo_csv_ordenacao2, quantidade_de_elementos, 
+                                          tempo_de_execucao_ordenacao2, QUANTIDADE_DE_TESTES, 
+                                          media_ordenacao2, desvio_padrao_ordenacao2);
+                        escrever_csv(arquivo_csv_ordenacao3, quantidade_de_elementos, 
+                                          tempo_de_execucao_ordenacao3, QUANTIDADE_DE_TESTES, 
+                                          media_ordenacao3, desvio_padrao_ordenacao3);
+                  break;
+            }
 
             free(tempo_de_execucao_ordenacao1);
             free(tempo_de_execucao_ordenacao2);
@@ -307,60 +278,12 @@ void executar_testes(int tipo_de_vetor) {
             printf("\n");
       }
 
-      // fclose(arquivo_bubble);
-      // fclose(arquivo_insertion);
-      // fclose(arquivo_merge);
-      
-      /*
-      Fazendo os arquivos .csv para adicionar no relatório
-      A ideia é criar 3 arquivos: um para cada algoritmo
-      Nota: Também por tipo de vetor (ordenado, ordenado inversamente e aleatório)
-      A tabela terá o seguine formato:
-      
-                                MergeSort ou Bubblesort ou Insertion Sort
-       Iteração de teste       25          100         1000        10000
-            1
-            2
-            3
-            4
-            5
-            6
-            7
-            8
-            9
-            10
-           Média
-         Desvio Padrão
-      
-      */
-
-      // FILE* arquivo_media_bubble = fopen("bubble_media.csv", "w");
-      // FILE* arquivo_media_insertion = fopen("insertion_media.csv", "w");
-      // FILE* arquivo_media_merge = fopen("merge_media.csv", "w");
-
-      // for(int i = 0; i < quantidade_de_testes+2; i++) {
-      //       fprintf(arquivo_media_bubble, "%d,%Lf,%Lf,%Lf,%Lf\n", 
-      //             i, medias_bubble[i][0], medias_bubble[i][1], medias_bubble[i][2], medias_bubble[i][3]);     
-      // }
-
-      // for(int i = 0; i < quantidade_de_testes+2; i++) {
-      //       fprintf(arquivo_media_insertion, "%d,%Lf,%Lf,%Lf,%Lf\n", 
-      //             i, medias_insertion[i][0], medias_insertion[i][1], medias_insertion[i][2], medias_insertion[i][3]);     
-      // }
-
-      // for(int i = 0; i < quantidade_de_testes+2; i++) {
-      //       fprintf(arquivo_media_merge, "%d,%Lf,%Lf,%Lf,%Lf\n", 
-      //             i, medias_merge[i][0], medias_merge[i][1], medias_merge[i][2], medias_merge[i][3]);     
-      // }
-
-      // imprimir_tabela_media(25, quantidade_de_testes, medias_bubble, medias_insertion, medias_merge);
-      // imprimir_tabela_media(100, quantidade_de_testes, medias_bubble, medias_insertion, medias_merge);
-      // imprimir_tabela_media(1000, quantidade_de_testes, medias_bubble, medias_insertion, medias_merge);
-      // imprimir_tabela_media(10000, quantidade_de_testes, medias_bubble, medias_insertion, medias_merge);
-
-      fclose(arquivo_ordenacao1);
-      fclose(arquivo_ordenacao2);
-      fclose(arquivo_ordenacao3);
+      fclose(arquivo_dat_ordenacao1);
+      fclose(arquivo_dat_ordenacao2);
+      fclose(arquivo_dat_ordenacao3);
+      fclose(arquivo_csv_ordenacao1);
+      fclose(arquivo_csv_ordenacao2);
+      fclose(arquivo_csv_ordenacao3);
 }
 
 /*

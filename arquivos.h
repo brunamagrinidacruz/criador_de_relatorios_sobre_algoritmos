@@ -17,11 +17,26 @@
 */
 FILE* cria_arquivo_dat(int ordenacao, int tipo_de_vetor);
 
+/*!<
+      Retorna arquivo FILE como ./resultados/testes/[nome_da_ordenacao-nome_tipo_de_vetor].csv
+*/
+FILE* cria_arquivo_csv(int ordenacao, int tipo_de_vetor);
+
 /*!< 
       Recebe o arquivo .dat
       Os valores salvos no arquivo serão quantidade_de_elementos e media_de_tempo
 */
 void escrever_dat(FILE* arquivo, int quantidade_de_elementos, long double media_de_tempo);
+
+
+/*!<
+      Recebe o arquivo .csv
+      Os valores salvos no arquivo serão para uma quantidade_de_elementos, os respectivos valores de tempo para cada quantidade_de_testes
+      Além disso salvo a média e desvio padrão 
+*/
+void escrever_csv(FILE* arquivo, int quantidade_de_elementos, 
+                        long double *tempo_de_execucao_ordenacao, int quantidade_de_testes, 
+                        long double media_ordenacao, long double desvio_padrao_ordenacao);
 
 void imprimir_tabela_media(int n, int quantidade_de_testes, long double medias_ordenacao1[][QUANTIDADE_VALORES_ANALISADOS], long double medias_ordenacao2[][QUANTIDADE_VALORES_ANALISADOS], long double medias_ordenacao3[][QUANTIDADE_VALORES_ANALISADOS]);
 
