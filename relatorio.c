@@ -25,7 +25,8 @@ set grid
 set title "Metodos de Ordenacao"
 set xlabel "Quantidade de elementos (n)"
 set ylabel "Tempo de execucao em segundos (t)"
-set yrange[0:0.5]
+set yrange[0:0.3]
+set yrange[0:0.00003]
 */
 
 //plot "bubble_sort-aleatorio.dat" title "Aleatorio"
@@ -39,20 +40,20 @@ plot "bubble_sort-aleatorio.dat" title "Aleatorio", "bubble_sort-ordenado.dat" t
 //plot "insertion_sort-aleatorio.dat" title "Aleatorio"
 //plot "insertion_sort-ordenado.dat" title "Ordenado"
 //plot "insertion_sort-ordenado_inverso.dat" title "Ordenado Invertido"
-/*
+/*          
 set title "Insertion Sort"
 plot "insertion_sort-aleatorio.dat" title "Aleatorio", "insertion_sort-ordenado.dat" title "Ordenado", "insertion_sort-ordenado_inverso.dat" title "Ordenado Invertido"
 */
 
-//plot "merge_sort-aleatorio.dat" title title "Aleatorio"
-//plot "merge_sort-ordenado.dat" title title "Ordenado"
+//plot "merge_sort-aleatorio.dat" title "Aleatorio"
+//plot "merge_sort-ordenado.dat" title "Ordenado"
 //plot "merge_sort-ordenado_inverso.dat" title "Ordenado Invertido"
 /*
 set title "Merge Sort"
 plot "merge_sort-aleatorio.dat" title "Aleatorio", "merge_sort-ordenado.dat" title "Ordenado", "merge_sort-ordenado_inverso.dat" title "Ordenado Invertido"
 */
 
-//plot "bubble.dat" title "Bubble Sort", "insertion.dat" title "Insertion Sort", "merge.dat" title "Merge Sort"
+//plot "bubble_sort-aleatorio.dat" title "Bubble Sort", "insertion_sort-aleatorio.dat" title "Insertion Sort", "merge_sort-aleatorio.dat" title "Merge Sort"
 //plot "bubble.dat" title "Bubble Sort" smooth bezier, "insertion.dat" title "Insertion Sort" smooth bezier, "merge.dat" title "Merge Sort" smooth bezier
 
 #include <stdio.h>
