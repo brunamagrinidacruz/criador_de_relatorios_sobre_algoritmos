@@ -26,7 +26,7 @@ set title "Metodos de Ordenacao"
 set xlabel "Quantidade de elementos (n)"
 set ylabel "Tempo de execucao em segundos (t)"
 set yrange[0:0.3]
-set yrange[0:0.00003]
+set yrange[0:0.0003]
 */
 
 //plot "bubble_sort-aleatorio.dat" title "Aleatorio"
@@ -54,7 +54,8 @@ plot "merge_sort-aleatorio.dat" title "Aleatorio", "merge_sort-ordenado.dat" tit
 */
 
 //plot "bubble_sort-aleatorio.dat" title "Bubble Sort", "insertion_sort-aleatorio.dat" title "Insertion Sort", "merge_sort-aleatorio.dat" title "Merge Sort"
-//plot "bubble.dat" title "Bubble Sort" smooth bezier, "insertion.dat" title "Insertion Sort" smooth bezier, "merge.dat" title "Merge Sort" smooth bezier
+//plot "bubble_sort-ordenado.dat" title "Bubble Sort", "insertion_sort-ordenado.dat" title "Insertion Sort", "merge_sort-ordenado.dat" title "Merge Sort"
+//plot "bubble_sort-ordenado_inverso.dat" title "Bubble Sort", "insertion_sort-ordenado_inverso.dat" title "Insertion Sort", "merge_sort-ordenado_inverso.dat" title "Merge Sort"
 
 #include <stdio.h>
 #include <stdlib.h>
