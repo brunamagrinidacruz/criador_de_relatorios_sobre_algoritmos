@@ -38,6 +38,4 @@ void escrever_csv(FILE* arquivo, int quantidade_de_elementos,
                         long double *tempo_de_execucao_ordenacao, int quantidade_de_testes, 
                         long double media_ordenacao, long double desvio_padrao_ordenacao);
 
-void imprimir_tabela_media(int n, int quantidade_de_testes, long double medias_ordenacao1[][QUANTIDADE_VALORES_ANALISADOS], long double medias_ordenacao2[][QUANTIDADE_VALORES_ANALISADOS], long double medias_ordenacao3[][QUANTIDADE_VALORES_ANALISADOS]);
-
 #endif

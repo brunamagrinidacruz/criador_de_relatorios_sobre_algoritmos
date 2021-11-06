@@ -194,3 +194,15 @@ Para o modo 2, execute o seguinte comando:
 ```
 ./relatorio > .out
 ```
+
+## Tutorial
+
+### Como adicionar um novo método de ordenação?
+Para adicionar um novo método de ordenação, é necessário fazer modificações em 3 arquivos: `ordenacoes.c`, `ordenacoes.h` e `relatorio.c`.
+
+1. `ordenacoes.c`  
+i. Adicione o algoritmo de ordenação
+
+2. `ordenacoes.h`  
+
+3. `relatorio.c`  
