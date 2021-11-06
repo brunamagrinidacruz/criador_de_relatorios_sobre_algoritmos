@@ -1,10 +1,3 @@
-/*!< Compilar e executar 
-make
-./relatorio > .out
-#Ou 
-./relatorio tipo_de_vetor > .out #com tipo_de_vetor sendo 1 - aleatório, 2 - ordenado e 3 - ordenado invertido
-*/
-
 /*!<
 Observação: 
 - É necessário que exista uma pasta ./resultados e dentro dela uma pasta correspondente para cada método de ordenação
@@ -13,49 +6,6 @@ O nome da pasta para cada método de ordenação deve ser igual definido no arqu
 - Além disso, é necessário que dentro da pasta ./resultados exista a pasta ./testes
 Lá serão salvas as tabelas, para cada método de ordenação e tipo de vetor, que correspondem as iterações de teste para um n={25, 100, 1000, 10000} 
 */
-
-/*!< gnuplot (https://www.cs.hmc.edu/~vrable/gnuplot/using-gnuplot.html) */
-
-/*
-cd resultados/
-cd [metodo de ordenação]
-
-gnuplot
-set grid
-set title "Metodos de Ordenacao"
-set xlabel "Quantidade de elementos (n)"
-set ylabel "Tempo de execucao em segundos (t)"
-set yrange[0:0.3]
-set yrange[0:0.0003]
-*/
-
-//plot "bubble_sort-aleatorio.dat" title "Aleatorio"
-//plot "bubble_sort-ordenado.dat" title "Ordenado"
-//plot "bubble_sort-ordenado_inverso.dat" title "Ordenado Invertido"
-/*
-set title "Bubble Sort"
-plot "bubble_sort-aleatorio.dat" title "Aleatorio", "bubble_sort-ordenado.dat" title "Ordenado", "bubble_sort-ordenado_inverso.dat" title "Ordenado Invertido"
-*/
-
-//plot "insertion_sort-aleatorio.dat" title "Aleatorio"
-//plot "insertion_sort-ordenado.dat" title "Ordenado"
-//plot "insertion_sort-ordenado_inverso.dat" title "Ordenado Invertido"
-/*          
-set title "Insertion Sort"
-plot "insertion_sort-aleatorio.dat" title "Aleatorio", "insertion_sort-ordenado.dat" title "Ordenado", "insertion_sort-ordenado_inverso.dat" title "Ordenado Invertido"
-*/
-
-//plot "merge_sort-aleatorio.dat" title "Aleatorio"
-//plot "merge_sort-ordenado.dat" title "Ordenado"
-//plot "merge_sort-ordenado_inverso.dat" title "Ordenado Invertido"
-/*
-set title "Merge Sort"
-plot "merge_sort-aleatorio.dat" title "Aleatorio", "merge_sort-ordenado.dat" title "Ordenado", "merge_sort-ordenado_inverso.dat" title "Ordenado Invertido"
-*/
-
-//plot "bubble_sort-aleatorio.dat" title "Bubble Sort", "insertion_sort-aleatorio.dat" title "Insertion Sort", "merge_sort-aleatorio.dat" title "Merge Sort"
-//plot "bubble_sort-ordenado.dat" title "Bubble Sort", "insertion_sort-ordenado.dat" title "Insertion Sort", "merge_sort-ordenado.dat" title "Merge Sort"
-//plot "bubble_sort-ordenado_inverso.dat" title "Bubble Sort", "insertion_sort-ordenado_inverso.dat" title "Insertion Sort", "merge_sort-ordenado_inverso.dat" title "Merge Sort"
 
 #include <stdio.h>
 #include <stdlib.h>
