@@ -1,12 +1,3 @@
-/*!<
-Observação: 
-- É necessário que exista uma pasta ./resultados e dentro dela uma pasta correspondente para cada método de ordenação
-Lá serão salvos os resultados calculados
-O nome da pasta para cada método de ordenação deve ser igual definido no arquivo ordenacao.h
-- Além disso, é necessário que dentro da pasta ./resultados exista a pasta ./testes
-Lá serão salvas as tabelas, para cada método de ordenação e tipo de vetor, que correspondem as iterações de teste para um n={25, 100, 1000, 10000} 
-*/
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>

@@ -99,9 +99,71 @@ plot "bubble_sort-ordenado_inverso.dat" title "Bubble Sort", "insertion_sort-ord
 
 ### Arquivo .csv
 
+O arquivo `.csv` está formatado para gerar uma tabela no seguinte formato:
+
+```   
+            1  2  3  4  5  6  7  8  9  10 | Média ± Desvio Padrão
+25          
+10                 tempo para n no teste t
+100
+10000
+```
+
+São exemplos de arquivos:
+```
+bubble_sort-aleatorio.csv
+bubble_sort-ordenado_inverso.csv
+...
+```
+
+Exemplo do conteúdo do arquivo:
+```
+,,Iteração,,,,,,,,,,
+,,1,2,3,4,5,6,7,8,9,10,Média ± Desvio Padrão
+n,25,0.000004,0.000003,0.000001,0.000002,0.000001,0.000001,0.000001,0.000001,0.000002,0.000002,0.000002 ± 0.000001
+,100,0.000025,0.000024,0.000023,0.000023,0.000022,0.000022,0.000022,0.000035,0.000022,0.000022,0.000024 ± 0.000004
+,1000,0.001939,0.001900,0.001916,0.001901,0.001950,0.001836,0.001889,0.001906,0.001893,0.001949,0.001908 ± 0.000032
+,10000,0.203963,0.203592,0.203993,0.203535,0.204515,0.204753,0.204612,0.204607,0.204367,0.204968,0.204290 ± 0.000468
+```
+
+Na pratica, a ideia é que o `.csv` seja utilizado para gerar uma tabela que pode ser colocada no relatório.  
+Para isso, basta importar o arquivo em um Excel, formatar e imprimir como PDF.   
+Exemplo:
+![Tabela de exemplo formatada no Excel](resultados/testes/bubble_sort-aleatorio.png)
 
 ## Requisitos
-Para que
+Para que o código armazene os arquivos de saida de forma organizada, é necessário criar uma pasta chamada `resultados`. 
+
+Dentro da pasta `resultados` é necessário criar uma pasta para cada algoritmo de ordenação, sendo que o nome da pasta é o nome definido no `DEFINE` no arquivo `ordenacoes.h`. Nesta pastas serão armazenados os códigos `.dat`.
+
+Além disso, é necessário criar uma pasta dentro de `resultados` chamada `testes` onde serão armazenados os arquivos `.csv`.
+
+Exemplo de estrutura dos diretórios:
+```
+resultados
+├── bubble_sort
+│   ├── bubble_sort-aleatorio.dat
+│   ├── bubble_sort-ordenado.dat
+│   ├── bubble_sort-ordenado_inverso.dat
+├── insertion_sort
+│   ├── insertion_sort-aleatorio.dat
+│   ├── insertion_sort-ordenado.dat
+│   ├── insertion_sort-ordenado_inverso.dat
+├── merge_sort
+│   ├── merge_sort-aleatorio.dat
+│   ├── merge_sort-ordenado.dat
+│   ├── merge_sort-ordenado_inverso.dat
+└── testes
+    ├── bubble_sort-aleatorio.csv
+    ├── bubble_sort-ordenado.csv
+    ├── bubble_sort-ordenado_inverso.csv
+    ├── insertion_sort-aleatorio.csv
+    ├── insertion_sort-ordenado.csv
+    ├── insertion_sort-ordenado_inverso.csv
+    ├── merge_sort-aleatorio.csv
+    ├── merge_sort-ordenado.csv
+    ├── merge_sort-ordenado_inverso.csv
+```
 
 ## Execução
 
