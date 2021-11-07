@@ -10,11 +10,18 @@
 #define ORDENACAO2_NOME "insertion_sort"
 #define ORDENACAO3 3
 #define ORDENACAO3_NOME "merge_sort"
+#define ORDENACAO4 4
+#define ORDENACAO4_NOME "quick_sort"
+#define ORDENACAO5 5
+#define ORDENACAO5_NOME "heap_sort"
+
+char* nome_ordenacao_por_codigo(int ordenacao);
 
 void bubble_sort(int vetor[], int n);
 void insertion_sort(int vetor[], int n);
 void merge_sort(int vetor[], int inicio, int fim);
-char* nome_ordenacao_por_codigo(int ordenacao);
+void quick_sort(int vetor[], int inicio, int fim);
+void heap_sort(int vetor[], int n);
 
 #endif
 

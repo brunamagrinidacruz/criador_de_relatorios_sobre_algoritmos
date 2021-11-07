@@ -198,11 +198,22 @@ Para o modo 2, execute o seguinte comando:
 ## Tutorial
 
 ### Como adicionar um novo método de ordenação?
-Para adicionar um novo método de ordenação, é necessário fazer modificações em 3 arquivos: `ordenacoes.c`, `ordenacoes.h` e `relatorio.c`.
+Para adicionar um novo método de ordenação, é necessário fazer modificações em 3 arquivos: `ordenacoes.h`, `ordenacoes.c` e `relatorio.c`.
 
-1. `ordenacoes.c`  
-i. Adicione o algoritmo de ordenação
+1. `ordenacoes.h`  
+i. Defina uma variável `ORDENACAO[ID]` com o ID da ordenação;  
+ii. Defina uma variável `ORDENACAO[ID]_NOME` com o nome da ordenação. Este nome será o nome da pasta em `resultados`;  
+iii. Adicione a assinatura da função do algoritmo de ordenação.
 
-2. `ordenacoes.h`  
+2. `ordenacoes.c`  
+i. Adicione a função do algoritmo de ordenação;   
+ii. Retorne o nome da ordenação com base no ID na função `nome_ordenacao_por_codigo`.
 
 3. `relatorio.c`  
+i. Na função `executar_testes`, defina `cria_arquivo_dat` e `cria_arquivo_csv`;  
+ii.  Defina o `vetor_ordenacao`;  
+iii. Defina `tempo_de_execucao_ordenacao` e `soma_ordenacao`;  
+iv. Defina `ordenar` e configure a função;  
+v. Definir e calcular `media_ordenacao` e `desvio_padrao_ordenacao`;  
+vi. Definir `escrever_dat` e `escrever_csv`;  
+vii. Definir liberação de memória.
