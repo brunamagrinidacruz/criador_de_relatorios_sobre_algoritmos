@@ -13,7 +13,7 @@
 #define VALOR_MINIMO_ALEATORIO 1 /*!< Valor minimo para os elementos utilizado na geração do vetor aleatório */
 #define VALOR_MAXIMO_ALEATORIO 1000 /*!< Valor máximo para os elementos utilizado na geração do vetor aleatório */
 
-#define TAMANHO_DE_VETOR_MAXIMO 100 //10000 /*!< O programa irá executar ordenação para n iniciando em 25 com acréscimo de 5 até TAMANHO_DE_VETOR_MAXIMO (ex. 25, 30, 35, ..., TAMANHO_DE_VETOR_MAXIMO) */
+#define TAMANHO_DE_VETOR_MAXIMO 10000 //100 /*!< O programa irá executar ordenação para n iniciando em 25 com acréscimo de 5 até TAMANHO_DE_VETOR_MAXIMO (ex. 25, 30, 35, ..., TAMANHO_DE_VETOR_MAXIMO) */
 #define QUANTIDADE_DE_TESTES 10 /*!< Quantidade de testes a serem realizados por execução de n (o tempo final será a média das QUANTIDADE_DE_TESTES execuções) */
 
 /*!< 
