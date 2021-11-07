@@ -87,36 +87,6 @@ void merge_sort(int vetor[], int inicio, int fim) {
 	intercala(vetor, inicio, centro, fim);
 }
 
-void heap_max(int vetor[], int pai, int n){
-	//verificar os filhos da "posição", se ferir a condição trocar o maior filho com o pai
-	int filho = pai*2;//filho da esquerda
-	//filho da direita = filho+1; pai*2+1
-
-	//garantir que o nó-filho da esquerda existe
-	if (filho > n) return;
-
-	//verificar a condição de heap em relação aos filhos
-	//1 - o filho da esquerda é maior que o pai
-	//2 - existe o filho da direita
-	//3 - o filho da direita é maior que o pai
-	//printf("Pai: %i. Esquerda %i.\n", vetor[pai], vetor[filho]);
-	if (vetor[filho] > vetor[pai] || (filho+1 <= n && vetor[filho+1] > vetor[pai])){
-		//1 - existe o filho da direita
-		//2 - o filho da direita é maior que o filho da esquerda
-		if (filho+1 <= n && vetor[filho+1] > vetor[filho])
-			filho = filho+1;
-
-		//troca o pai com o maior filho
-		//***se o maior filho é o da esquerda, ele já se encontra em "filho"
-		int aux = vetor[pai];
-		vetor[pai] = vetor[filho];
-		vetor[filho] = aux;
-
-		//atualizar possíveis "netos" restantes
-		heap_max(vetor, filho, n);
-	}
-}
-
 void quick_sort(int vetor[], int inicio, int fim) {
 	//primeira etapa: verificar caso base (vetores unitários ou nulos)
 	if (fim <= inicio)
@@ -153,6 +123,36 @@ void quick_sort(int vetor[], int inicio, int fim) {
 	//terceira etapa: recursão
 	quick_sort(vetor, inicio, pivo-1); //j é a nova posição do pivô
 	quick_sort(vetor, pivo+1, fim);	
+}
+
+void heap_max(int vetor[], int pai, int n){
+	//verificar os filhos da "posição", se ferir a condição trocar o maior filho com o pai
+	int filho = pai*2;//filho da esquerda
+	//filho da direita = filho+1; pai*2+1
+
+	//garantir que o nó-filho da esquerda existe
+	if (filho > n) return;
+
+	//verificar a condição de heap em relação aos filhos
+	//1 - o filho da esquerda é maior que o pai
+	//2 - existe o filho da direita
+	//3 - o filho da direita é maior que o pai
+	//printf("Pai: %i. Esquerda %i.\n", vetor[pai], vetor[filho]);
+	if (vetor[filho] > vetor[pai] || (filho+1 <= n && vetor[filho+1] > vetor[pai])){
+		//1 - existe o filho da direita
+		//2 - o filho da direita é maior que o filho da esquerda
+		if (filho+1 <= n && vetor[filho+1] > vetor[filho])
+			filho = filho+1;
+
+		//troca o pai com o maior filho
+		//***se o maior filho é o da esquerda, ele já se encontra em "filho"
+		int aux = vetor[pai];
+		vetor[pai] = vetor[filho];
+		vetor[filho] = aux;
+
+		//atualizar possíveis "netos" restantes
+		heap_max(vetor, filho, n);
+	}
 }
 
 void heap_sort(int vetor[], int n) {
