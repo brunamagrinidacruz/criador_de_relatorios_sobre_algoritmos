@@ -99,6 +99,17 @@ plot "heap_sort-ordenado_inverso.dat" title "Ordenado Invertido"
 plot "heap_sort-aleatorio.dat" title "Aleatorio", "heap_sort-ordenado.dat" title "Ordenado", "heap_sort-ordenado_inverso.dat" title "Ordenado Invertido"
 ```
 
+- Quick Sort
+```
+set title "Quick Sort"
+
+plot "quick_sort-aleatorio.dat" title "Aleatorio"
+plot "quick_sort-ordenado.dat" title "Ordenado"
+plot "quick_sort-ordenado_inverso.dat" title "Ordenado Invertido"
+
+plot "quick_sort-aleatorio.dat" title "Aleatorio", "quick_sort-ordenado.dat" title "Ordenado", "quick_sort-ordenado_inverso.dat" title "Ordenado Invertido"
+```
+
 E códigos para plot de comparação entre os métodos de ordenação com diferente tipos de vetores:
 ```
 plot "bubble_sort-aleatorio.dat" title "Bubble Sort", "insertion_sort-aleatorio.dat" title "Insertion Sort", "merge_sort-aleatorio.dat" title "Merge Sort"
@@ -106,6 +117,10 @@ plot "bubble_sort-aleatorio.dat" title "Bubble Sort", "insertion_sort-aleatorio.
 plot "bubble_sort-ordenado.dat" title "Bubble Sort", "insertion_sort-ordenado.dat" title "Insertion Sort", "merge_sort-ordenado.dat" title "Merge Sort"
 
 plot "bubble_sort-ordenado_inverso.dat" title "Bubble Sort", "insertion_sort-ordenado_inverso.dat" title "Insertion Sort", "merge_sort-ordenado_inverso.dat" title "Merge Sort"
+```
+
+```
+plot "heap_sort-aleatorio.dat" title "Heap Sort", "quick_sort-aleatorio.dat" title "Quick Sort"
 ```
 
 ### Arquivo .csv

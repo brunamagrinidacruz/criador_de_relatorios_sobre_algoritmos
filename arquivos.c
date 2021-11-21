@@ -73,9 +73,9 @@ void escrever_csv(FILE* arquivo, int quantidade_de_elementos,
       
       /*!< Por conta da primeira linha ter o "n" representando o dado */
       if(quantidade_de_elementos == 25) {
-            fprintf(arquivo, "n,%d,", quantidade_de_elementos);  
+            fprintf(arquivo, "n,%ds,", quantidade_de_elementos);  
       } else {
-            fprintf(arquivo, ",%d,", quantidade_de_elementos);  
+            fprintf(arquivo, ",%ds,", quantidade_de_elementos);  
       }
 
       /*!< Armazenando para cada iteração */
@@ -84,7 +84,7 @@ void escrever_csv(FILE* arquivo, int quantidade_de_elementos,
       }
 
       /*!< Armazenando a média e desvio padrão */
-      fprintf(arquivo, "%Lf ± %Lf", media_ordenacao, desvio_padrao_ordenacao);
+      fprintf(arquivo, "%Lfs ± %Lfs", media_ordenacao, desvio_padrao_ordenacao);
 
       fprintf(arquivo, "\n");  
 }

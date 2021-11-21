@@ -87,16 +87,13 @@ void merge_sort(int vetor[], int inicio, int fim) {
 	intercala(vetor, inicio, centro, fim);
 }
 
-void quick_sort(int vetor[], int inicio, int fim) {
+void quick_sort(int vetor[], int inicio, int fim){
 	//primeira etapa: verificar caso base (vetores unitários ou nulos)
 	if (fim <= inicio)
 		return;
 
-	//int pivo = inicio;//pivô no início
-	//int pivo = (int)((inicio+fim)/2); //pivô central
-	int pivo = (int)(rand()%(fim-inicio))+inicio; //pivô aleatório
-
 	//segunda etapa: partição em relação ao pivô
+	int pivo = inicio;
 	int i = inicio+1; //percorre o vetor aumentando seu valor
 	int j = fim;//percorre o vetor diminuindo seu valor
 
