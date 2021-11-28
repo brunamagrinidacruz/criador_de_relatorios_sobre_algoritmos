@@ -121,6 +121,8 @@ plot "bubble_sort-ordenado_inverso.dat" title "Bubble Sort", "insertion_sort-ord
 
 ```
 plot "heap_sort-aleatorio.dat" title "Heap Sort", "quick_sort-aleatorio.dat" title "Quick Sort"
+
+plot "bubble_sort-aleatorio.dat" title "Bubble Sort", "insertion_sort-aleatorio.dat" title "Insertion Sort", "merge_sort-aleatorio.dat" title "Merge Sort", "quick_sort-aleatorio.dat" title "Quick Sort", "heap_sort-aleatorio.dat" title "Heap Sort"
 ```
 
 ### Arquivo .csv
