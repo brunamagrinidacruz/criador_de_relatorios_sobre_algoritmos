@@ -2,6 +2,7 @@
 #define ORDENACOES_H
 
 #include <stdlib.h>
+#include <stdio.h>
 
 /*!< Define o nome das ordenações para impressão e mais importante: nome da pasta em ./resultados que os arquivos correspondentes serão salvos */
 #define ORDENACAO1 1
@@ -14,6 +15,8 @@
 #define ORDENACAO4_NOME "quick_sort"
 #define ORDENACAO5 5
 #define ORDENACAO5_NOME "heap_sort"
+#define ORDENACAO6 6
+#define ORDENACAO6_NOME "counting_sort"
 
 char* nome_ordenacao_por_codigo(int ordenacao);
 
@@ -22,6 +25,7 @@ void insertion_sort(int vetor[], int n);
 void merge_sort(int vetor[], int inicio, int fim);
 void quick_sort(int vetor[], int inicio, int fim);
 void heap_sort(int vetor[], int n);
+void counting_sort(int vetor[], int n);
 
 #endif
 

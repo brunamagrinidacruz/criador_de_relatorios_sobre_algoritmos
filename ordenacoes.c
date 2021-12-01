@@ -12,6 +12,8 @@ char* nome_ordenacao_por_codigo(int ordenacao) {
 			return ORDENACAO4_NOME;
 		case ORDENACAO5:
 			return ORDENACAO5_NOME;
+		case ORDENACAO6:
+			return ORDENACAO6_NOME;
 		default:
 			return "Ordenação inválida";
 	}
@@ -170,4 +172,47 @@ void heap_sort(int vetor[], int n) {
 		n--; // reduzimos o tamanho do Heap
 		heap_max(vetor, 1, n);//verificamos a consistência do Heap para o nó-raiz!
 	}
+}
+
+void counting_sort(int vetor[], int n) {
+	//1) Cópia completa dos dados originais.
+	int* vetor_auxiliar = (int*) malloc(sizeof(int) * n);
+	
+	//2.1) Percorrer as chaves e verificar o mínimo e máximo
+	int max, min;
+	vetor_auxiliar[0] = max = min = vetor[0];
+	int i = 0;
+	for(i = 1; i < n; i++){
+		if (vetor[i] > max) max = vetor[i];
+		if (vetor[i] < min) min = vetor[i];
+		vetor_auxiliar[i] = vetor[i];
+	}
+
+	//2.2) Criação de um vetor adicional de contagem [0 - 5] -> 6 posições [5-0+1]
+	int* vetor_contagem = (int*) calloc(max-min+1, sizeof(int));
+	
+	//2.3) Percorrer o vetor de contagem com o somatório por chave
+	// [2, 5, 7, 7] -> [1 0 0 1 0 2] 
+	for(i = 0; i < n; i++){
+		int posicao = vetor[i] - min; //ajuste (- min)
+		vetor_contagem[posicao]++;
+	}
+	
+	//3) contagem acumulada das chaves [1 0 0 1 0 1] -> [0 1 1 1 2 2]
+	int total = 0;
+	for(i = 0; i <= (max-min); i++){
+		int contagem_anterior = vetor_contagem[i];
+		vetor_contagem[i] = total;
+		total = total + contagem_anterior;
+	}
+	
+	//4) percorrer o vetor de contagem e produzir posicionamento correto
+	for(i = 0; i < n; i++){
+		int posicao_ordenada = vetor_contagem[vetor_auxiliar[i]-min];
+		vetor[posicao_ordenada] = vetor_auxiliar[i];
+		vetor_contagem[vetor_auxiliar[i]-min]++;
+	}
+
+	free(vetor_contagem);
+	free(vetor_auxiliar);
 }
