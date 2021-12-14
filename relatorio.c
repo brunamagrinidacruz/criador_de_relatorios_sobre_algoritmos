@@ -58,6 +58,11 @@ void ordenar(int ordenacao, int teste, int vetor_ordenacao[], int quantidade_de_
                   counting_sort(vetor_ordenacao, quantidade_de_elementos);
                   fim = clock();
             break;
+            case ORDENACAO7: 
+                  inicio = clock();
+                  bucket_sort(vetor_ordenacao, quantidade_de_elementos);
+                  fim = clock();
+            break;
       }
       
       if(DEBUG) printf("         Vetor %s ordenado: \n", nome_ordenacao_por_codigo(ordenacao));
@@ -77,14 +82,16 @@ void executar_testes(int tipo_de_vetor) {
       // FILE* arquivo_dat_ordenacao3 = cria_arquivo_dat(ORDENACAO3, tipo_de_vetor);
       // FILE* arquivo_dat_ordenacao4 = cria_arquivo_dat(ORDENACAO4, tipo_de_vetor);
       // FILE* arquivo_dat_ordenacao5 = cria_arquivo_dat(ORDENACAO5, tipo_de_vetor);
-      FILE* arquivo_dat_ordenacao6 = cria_arquivo_dat(ORDENACAO6, tipo_de_vetor);
+      // FILE* arquivo_dat_ordenacao6 = cria_arquivo_dat(ORDENACAO6, tipo_de_vetor);
+      FILE* arquivo_dat_ordenacao7 = cria_arquivo_dat(ORDENACAO7, tipo_de_vetor);
 
       // FILE* arquivo_csv_ordenacao1 = cria_arquivo_csv(ORDENACAO1, tipo_de_vetor);
       // FILE* arquivo_csv_ordenacao2 = cria_arquivo_csv(ORDENACAO2, tipo_de_vetor);
       // FILE* arquivo_csv_ordenacao3 = cria_arquivo_csv(ORDENACAO3, tipo_de_vetor);
       // FILE* arquivo_csv_ordenacao4 = cria_arquivo_csv(ORDENACAO4, tipo_de_vetor);
       // FILE* arquivo_csv_ordenacao5 = cria_arquivo_csv(ORDENACAO5, tipo_de_vetor);
-      FILE* arquivo_csv_ordenacao6 = cria_arquivo_csv(ORDENACAO6, tipo_de_vetor);
+      // FILE* arquivo_csv_ordenacao6 = cria_arquivo_csv(ORDENACAO6, tipo_de_vetor);
+      FILE* arquivo_csv_ordenacao7 = cria_arquivo_csv(ORDENACAO7, tipo_de_vetor);
      
       /*!< Variação dos valores de n (quantidade_de_elementos do vetor) */
       for(int quantidade_de_elementos = 25; quantidade_de_elementos <= TAMANHO_DE_VETOR_MAXIMO; quantidade_de_elementos+=5) {
@@ -96,7 +103,8 @@ void executar_testes(int tipo_de_vetor) {
             // int *vetor_ordenacao3 = malloc(quantidade_de_elementos * sizeof(int));
             // int *vetor_ordenacao4 = malloc(quantidade_de_elementos * sizeof(int));
             // int *vetor_ordenacao5 = malloc((quantidade_de_elementos+1) * sizeof(int));
-            int *vetor_ordenacao6 = malloc(quantidade_de_elementos * sizeof(int));
+            // int *vetor_ordenacao6 = malloc(quantidade_de_elementos * sizeof(int));
+            int *vetor_ordenacao7 = malloc(quantidade_de_elementos * sizeof(int));
 
             /*!< Definindo os vetores de tamanho n com base no tipo */
             printf("Quantidade de elementos: %d\n", quantidade_de_elementos);
@@ -128,14 +136,16 @@ void executar_testes(int tipo_de_vetor) {
             // long double *tempo_de_execucao_ordenacao3 = malloc(QUANTIDADE_DE_TESTES * sizeof(long double));
             // long double *tempo_de_execucao_ordenacao4 = malloc(QUANTIDADE_DE_TESTES * sizeof(long double));
             // long double *tempo_de_execucao_ordenacao5 = malloc(QUANTIDADE_DE_TESTES * sizeof(long double));
-            long double *tempo_de_execucao_ordenacao6 = malloc(QUANTIDADE_DE_TESTES * sizeof(long double));
+            // long double *tempo_de_execucao_ordenacao6 = malloc(QUANTIDADE_DE_TESTES * sizeof(long double));
+            long double *tempo_de_execucao_ordenacao7 = malloc(QUANTIDADE_DE_TESTES * sizeof(long double));
             
             // long double soma_ordenacao1 = 0;
             // long double soma_ordenacao2 = 0;
             // long double soma_ordenacao3 = 0;
             // long double soma_ordenacao4 = 0;
             // long double soma_ordenacao5 = 0;
-            long double soma_ordenacao6 = 0;
+            // long double soma_ordenacao6 = 0;
+            long double soma_ordenacao7 = 0;
 
             /*!< Realizando QUANTIDADE_DE_TESTES para cada n */
             for(int teste = 0; teste < QUANTIDADE_DE_TESTES; teste++) {
@@ -144,7 +154,8 @@ void executar_testes(int tipo_de_vetor) {
                   // copiar_vetor(vetor_original, vetor_ordenacao3, quantidade_de_elementos);
                   // copiar_vetor(vetor_original, vetor_ordenacao4, quantidade_de_elementos);
                   // copiar_vetor(vetor_original, vetor_ordenacao5+1, quantidade_de_elementos);
-                  copiar_vetor(vetor_original, vetor_ordenacao6, quantidade_de_elementos);
+                  // copiar_vetor(vetor_original, vetor_ordenacao6, quantidade_de_elementos);
+                  copiar_vetor(vetor_original, vetor_ordenacao7, quantidade_de_elementos);
 
                   if(DEBUG) printf("\n---------Teste %d\n\n", teste);
 
@@ -163,7 +174,10 @@ void executar_testes(int tipo_de_vetor) {
                   // ordenar(ORDENACAO5, teste, vetor_ordenacao5, quantidade_de_elementos, tempo_de_execucao_ordenacao5, &soma_ordenacao5);
                   // if(DEBUG) printf("\n-----\n");
 
-                  ordenar(ORDENACAO6, teste, vetor_ordenacao6, quantidade_de_elementos, tempo_de_execucao_ordenacao6, &soma_ordenacao6);
+                  // ordenar(ORDENACAO6, teste, vetor_ordenacao6, quantidade_de_elementos, tempo_de_execucao_ordenacao6, &soma_ordenacao6);
+                  // if(DEBUG) printf("\n-----\n");
+
+                  ordenar(ORDENACAO7, teste, vetor_ordenacao7, quantidade_de_elementos, tempo_de_execucao_ordenacao7, &soma_ordenacao7);
                   // if(DEBUG) printf("\n-----\n");
             }
             if(DEBUG) printf("\n---------\n\n");
@@ -175,7 +189,8 @@ void executar_testes(int tipo_de_vetor) {
             // if(DEBUG) printf("Soma - %s: %Lf\n", nome_ordenacao_por_codigo(ORDENACAO3), soma_ordenacao3);
             // if(DEBUG) printf("Soma - %s: %Lf\n", nome_ordenacao_por_codigo(ORDENACAO4), soma_ordenacao4);
             // if(DEBUG) printf("Soma - %s: %Lf\n", nome_ordenacao_por_codigo(ORDENACAO5), soma_ordenacao5);
-            if(DEBUG) printf("Soma - %s: %Lf\n", nome_ordenacao_por_codigo(ORDENACAO6), soma_ordenacao6);
+            // if(DEBUG) printf("Soma - %s: %Lf\n", nome_ordenacao_por_codigo(ORDENACAO6), soma_ordenacao6);
+            if(DEBUG) printf("Soma - %s: %Lf\n", nome_ordenacao_por_codigo(ORDENACAO7), soma_ordenacao7);
             if(DEBUG) printf("\n");
 
             /*!< Média */
@@ -184,21 +199,24 @@ void executar_testes(int tipo_de_vetor) {
             // long double media_ordenacao3 = 0;
             // long double media_ordenacao4 = 0;
             // long double media_ordenacao5 = 0;
-            long double media_ordenacao6 = 0;
+            // long double media_ordenacao6 = 0;
+            long double media_ordenacao7 = 0;
 
             // media_ordenacao1 = soma_ordenacao1/QUANTIDADE_DE_TESTES;
             // media_ordenacao2 = soma_ordenacao2/QUANTIDADE_DE_TESTES;
             // media_ordenacao3 = soma_ordenacao3/QUANTIDADE_DE_TESTES;
             // media_ordenacao4 = soma_ordenacao4/QUANTIDADE_DE_TESTES;
             // media_ordenacao5 = soma_ordenacao5/QUANTIDADE_DE_TESTES;
-            media_ordenacao6 = soma_ordenacao6/QUANTIDADE_DE_TESTES;
+            // media_ordenacao6 = soma_ordenacao6/QUANTIDADE_DE_TESTES;
+            media_ordenacao7 = soma_ordenacao7/QUANTIDADE_DE_TESTES;
 
             // if(DEBUG) printf("Média - %s: %Lf\n", nome_ordenacao_por_codigo(ORDENACAO1), media_ordenacao1);
             // if(DEBUG) printf("Média - %s: %Lf\n", nome_ordenacao_por_codigo(ORDENACAO2), media_ordenacao2);
             // if(DEBUG) printf("Média - %s: %Lf\n", nome_ordenacao_por_codigo(ORDENACAO3), media_ordenacao3);
             // if(DEBUG) printf("Média - %s: %Lf\n", nome_ordenacao_por_codigo(ORDENACAO4), media_ordenacao4);
             // if(DEBUG) printf("Média - %s: %Lf\n", nome_ordenacao_por_codigo(ORDENACAO5), media_ordenacao5);
-            if(DEBUG) printf("Média - %s: %Lf\n", nome_ordenacao_por_codigo(ORDENACAO6), media_ordenacao6);
+            // if(DEBUG) printf("Média - %s: %Lf\n", nome_ordenacao_por_codigo(ORDENACAO6), media_ordenacao6);
+            if(DEBUG) printf("Média - %s: %Lf\n", nome_ordenacao_por_codigo(ORDENACAO7), media_ordenacao7);
             if(DEBUG) printf("\n");
 
             /*!< Desvio Padrão */
@@ -207,7 +225,8 @@ void executar_testes(int tipo_de_vetor) {
             // long double desvio_padrao_ordenacao3 = 0;
             // long double desvio_padrao_ordenacao4 = 0;
             // long double desvio_padrao_ordenacao5 = 0;
-            long double desvio_padrao_ordenacao6 = 0;
+            // long double desvio_padrao_ordenacao6 = 0;
+            long double desvio_padrao_ordenacao7 = 0;
 
             for(int teste = 0; teste < QUANTIDADE_DE_TESTES; teste++) {
                   // desvio_padrao_ordenacao1 += pow((tempo_de_execucao_ordenacao1[teste]-media_ordenacao1), 2);
@@ -215,7 +234,8 @@ void executar_testes(int tipo_de_vetor) {
                   // desvio_padrao_ordenacao3 += pow((tempo_de_execucao_ordenacao3[teste]-media_ordenacao3), 2);
                   // desvio_padrao_ordenacao4 += pow((tempo_de_execucao_ordenacao4[teste]-media_ordenacao4), 2);
                   // desvio_padrao_ordenacao5 += pow((tempo_de_execucao_ordenacao5[teste]-media_ordenacao5), 2);
-                  desvio_padrao_ordenacao6 += pow((tempo_de_execucao_ordenacao6[teste]-media_ordenacao6), 2);
+                  // desvio_padrao_ordenacao6 += pow((tempo_de_execucao_ordenacao6[teste]-media_ordenacao6), 2);
+                  desvio_padrao_ordenacao7 += pow((tempo_de_execucao_ordenacao7[teste]-media_ordenacao7), 2);
             }
 
             // desvio_padrao_ordenacao1 = sqrt(desvio_padrao_ordenacao1/QUANTIDADE_DE_TESTES);
@@ -223,14 +243,16 @@ void executar_testes(int tipo_de_vetor) {
             // desvio_padrao_ordenacao3 = sqrt(desvio_padrao_ordenacao3/QUANTIDADE_DE_TESTES);
             // desvio_padrao_ordenacao4 = sqrt(desvio_padrao_ordenacao4/QUANTIDADE_DE_TESTES);
             // desvio_padrao_ordenacao5 = sqrt(desvio_padrao_ordenacao5/QUANTIDADE_DE_TESTES);
-            desvio_padrao_ordenacao6 = sqrt(desvio_padrao_ordenacao6/QUANTIDADE_DE_TESTES);
+            // desvio_padrao_ordenacao6 = sqrt(desvio_padrao_ordenacao6/QUANTIDADE_DE_TESTES);
+            desvio_padrao_ordenacao7 = sqrt(desvio_padrao_ordenacao7/QUANTIDADE_DE_TESTES);
 
             // if(DEBUG) printf("Desvio Padrão - %s: %Lf\n", nome_ordenacao_por_codigo(ORDENACAO1), desvio_padrao_ordenacao1);
             // if(DEBUG) printf("Desvio Padrão - %s: %Lf\n", nome_ordenacao_por_codigo(ORDENACAO2), desvio_padrao_ordenacao2);
             // if(DEBUG) printf("Desvio Padrão - %s: %Lf\n", nome_ordenacao_por_codigo(ORDENACAO3), desvio_padrao_ordenacao3);
             // if(DEBUG) printf("Desvio Padrão - %s: %Lf\n", nome_ordenacao_por_codigo(ORDENACAO4), desvio_padrao_ordenacao4);
             // if(DEBUG) printf("Desvio Padrão - %s: %Lf\n", nome_ordenacao_por_codigo(ORDENACAO5), desvio_padrao_ordenacao5);
-            if(DEBUG) printf("Desvio Padrão - %s: %Lf\n", nome_ordenacao_por_codigo(ORDENACAO6), desvio_padrao_ordenacao6);
+            // if(DEBUG) printf("Desvio Padrão - %s: %Lf\n", nome_ordenacao_por_codigo(ORDENACAO6), desvio_padrao_ordenacao6);
+            if(DEBUG) printf("Desvio Padrão - %s: %Lf\n", nome_ordenacao_por_codigo(ORDENACAO7), desvio_padrao_ordenacao7);
 
             /*!< Escrevendo arquivo para o gnuplot (.dat) */
             /*!< 
@@ -245,7 +267,8 @@ void executar_testes(int tipo_de_vetor) {
             // escrever_dat(arquivo_dat_ordenacao3, quantidade_de_elementos, media_ordenacao3);
             // escrever_dat(arquivo_dat_ordenacao4, quantidade_de_elementos, media_ordenacao4);
             // escrever_dat(arquivo_dat_ordenacao5, quantidade_de_elementos, media_ordenacao5);
-            escrever_dat(arquivo_dat_ordenacao6, quantidade_de_elementos, media_ordenacao6);
+            // escrever_dat(arquivo_dat_ordenacao6, quantidade_de_elementos, media_ordenacao6);
+            escrever_dat(arquivo_dat_ordenacao7, quantidade_de_elementos, media_ordenacao7);
 
             /*!< Escrevendo arquivo de tabela de testes (.csv) para o relatório */
             /*!< 
@@ -281,9 +304,12 @@ void executar_testes(int tipo_de_vetor) {
                         // escrever_csv(arquivo_csv_ordenacao5, quantidade_de_elementos, 
                                           // tempo_de_execucao_ordenacao5, QUANTIDADE_DE_TESTES, 
                                           // media_ordenacao5, desvio_padrao_ordenacao5);
-                        escrever_csv(arquivo_csv_ordenacao6, quantidade_de_elementos, 
-                                          tempo_de_execucao_ordenacao6, QUANTIDADE_DE_TESTES, 
-                                          media_ordenacao6, desvio_padrao_ordenacao6);
+                        // escrever_csv(arquivo_csv_ordenacao6, quantidade_de_elementos, 
+                        //                   tempo_de_execucao_ordenacao6, QUANTIDADE_DE_TESTES, 
+                        //                   media_ordenacao6, desvio_padrao_ordenacao6);
+                        escrever_csv(arquivo_csv_ordenacao7, quantidade_de_elementos, 
+                                          tempo_de_execucao_ordenacao7, QUANTIDADE_DE_TESTES, 
+                                          media_ordenacao7, desvio_padrao_ordenacao7);
                   break;
             }
 
@@ -292,7 +318,8 @@ void executar_testes(int tipo_de_vetor) {
             // free(tempo_de_execucao_ordenacao3);
             // free(tempo_de_execucao_ordenacao4);
             // free(tempo_de_execucao_ordenacao5);
-            free(tempo_de_execucao_ordenacao6);
+            // free(tempo_de_execucao_ordenacao6);
+            free(tempo_de_execucao_ordenacao7);
 
             free(vetor_original);
             // free(vetor_ordenacao1);
@@ -300,7 +327,8 @@ void executar_testes(int tipo_de_vetor) {
             // free(vetor_ordenacao3);
             // free(vetor_ordenacao4);
             // free(vetor_ordenacao5);
-            free(vetor_ordenacao6);
+            // free(vetor_ordenacao6);
+            free(vetor_ordenacao7);
 
             printf("\n");
       }
@@ -310,14 +338,16 @@ void executar_testes(int tipo_de_vetor) {
       // fclose(arquivo_dat_ordenacao3);
       // fclose(arquivo_dat_ordenacao4);
       // fclose(arquivo_dat_ordenacao5);
-      fclose(arquivo_dat_ordenacao6);
+      // fclose(arquivo_dat_ordenacao6);
+      fclose(arquivo_dat_ordenacao7);
 
       // fclose(arquivo_csv_ordenacao1);
       // fclose(arquivo_csv_ordenacao2);
       // fclose(arquivo_csv_ordenacao3);
       // fclose(arquivo_csv_ordenacao4);
       // fclose(arquivo_csv_ordenacao5);
-      fclose(arquivo_csv_ordenacao6);
+      // fclose(arquivo_csv_ordenacao6);
+      fclose(arquivo_csv_ordenacao7);
 }
 
 /*

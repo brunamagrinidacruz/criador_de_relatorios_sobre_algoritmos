@@ -17,6 +17,8 @@
 #define ORDENACAO5_NOME "heap_sort"
 #define ORDENACAO6 6
 #define ORDENACAO6_NOME "counting_sort"
+#define ORDENACAO7 7
+#define ORDENACAO7_NOME "bucket_sort"
 
 char* nome_ordenacao_por_codigo(int ordenacao);
 
@@ -26,6 +28,7 @@ void merge_sort(int vetor[], int inicio, int fim);
 void quick_sort(int vetor[], int inicio, int fim);
 void heap_sort(int vetor[], int n);
 void counting_sort(int vetor[], int n);
+void bucket_sort(int vetor[], int n);
 
 #endif
 

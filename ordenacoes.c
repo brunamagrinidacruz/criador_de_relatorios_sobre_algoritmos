@@ -14,6 +14,8 @@ char* nome_ordenacao_por_codigo(int ordenacao) {
 			return ORDENACAO5_NOME;
 		case ORDENACAO6:
 			return ORDENACAO6_NOME;
+		case ORDENACAO7:
+			return ORDENACAO7_NOME;
 		default:
 			return "Ordenação inválida";
 	}
@@ -215,4 +217,64 @@ void counting_sort(int vetor[], int n) {
 
 	free(vetor_contagem);
 	free(vetor_auxiliar);
+}
+
+typedef struct node {
+	int elemento;
+	struct node* next;
+} NODE;
+
+typedef struct bucket {
+	NODE* inicio;
+	NODE* fim;
+} BUCKET;
+
+void bucket_sort(int vetor[], int n) { 
+      //1) Percorrer as chaves e verificar o mínimo e máximo
+	int max, min;
+	max = min = vetor[0];
+	int i = 0;
+	for(i = 0; i < n; i++){
+		if (vetor[i] > max) max = vetor[i];
+		if (vetor[i] < min) min = vetor[i];
+	}
+	
+	//2) Criação de um vetor adicional de listas (buckets)
+	BUCKET* buckets = (BUCKET*) calloc(max-min+1, sizeof(BUCKET));
+	
+	//3) Percorrer o vetor e preencher os buckets de acordo com as chaves
+	for(i = 0; i < n; i++){
+		int posicao = vetor[i] - min;
+		
+		//criando novo nó
+		NODE* no = malloc(sizeof(NODE));
+		no->elemento = vetor[i];
+		no->next = NULL;
+		
+		//inserindo na fila
+		if (buckets[posicao].inicio == NULL) {
+			buckets[posicao].inicio = no;
+            } else {
+			(buckets[posicao].fim)->next = no;
+            }
+		buckets[posicao].fim = no;
+	}
+	
+	//4) Posicionar os elementos no vetor original, retirando elementos da lista
+	int j = 0;
+	for(i = 0; i <= (max-min); i++){
+		NODE* posicao;
+		posicao = buckets[i].inicio;
+		while(posicao != NULL){
+			vetor[j] = posicao->elemento;
+			j++;
+			
+			NODE *deletar = posicao;
+			posicao = posicao->next;
+			buckets[i].inicio = posicao;
+			free(deletar);
+		}
+	}
+	
+	free(buckets);
 }
