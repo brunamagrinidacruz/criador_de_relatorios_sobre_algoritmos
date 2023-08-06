@@ -1,5 +1,3 @@
-Projeto para matéria de Laboratório de Introdução à Ciência da Computação II (SCC0220) para o curso de Ciências de Computação da USP São Carlos.
-
 # Relatório de Comparação de Algoritmos de Ordenação
 O código executa algoritmos de ordenação e tem como resultado arquivos para análise e composição de relatório comparativo entre os métodos.
 
@@ -245,3 +243,7 @@ iv. Defina `ordenar` e configure a função;
 v. Definir e calcular `media_ordenacao` e `desvio_padrao_ordenacao`;  
 vi. Definir `escrever_dat` e `escrever_csv`;  
 vii. Definir liberação de memória.
+
+---
+
+Project for Laboratório de Introdução à Ciência da Computação II (SCC0220) - Computer Science @ Instituto de Ciências Matemáticas e de Computação (ICMC) - Universidade de São Paulo (USP). São Carlos, Brazil, 2021.
