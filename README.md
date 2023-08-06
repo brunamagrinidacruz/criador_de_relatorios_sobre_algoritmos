@@ -246,4 +246,4 @@ vii. Definir liberação de memória.
 
 ---
 
-Project for Laboratório de Introdução à Ciência da Computação II (SCC0220) - Computer Science @ Instituto de Ciências Matemáticas e de Computação (ICMC) - Universidade de São Paulo (USP). São Carlos, Brazil, 2021.
+Project to assist in Introduction to Computer Science Laboratory II (SCC0220) - Computer Science @ Instituto de Ciências Matemáticas e de Computação (ICMC) - Universidade de São Paulo (USP). São Carlos, Brazil, 2021.
